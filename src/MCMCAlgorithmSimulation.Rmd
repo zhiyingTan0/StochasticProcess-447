@@ -1,0 +1,42 @@
+---
+title: "MCMC Algorithm Simulation"
+output:
+  pdf_document: default
+  html_document: default
+header-includes: \usepackage{blkarray}
+---
+
+Consider a Poisson distribution with parameter lambda = 3 conditioned to be nonzeros, Implement an MCMC algorithm to simulate from this distribution, using a proposal distribution that is geometric with parameter p =1/3. Use your simulation to estimate the mean and variance.
+
+```{r}
+N<-50000
+p<-1/3
+lamda<- 3
+X<-rep(0,N)
+X[1]<-0
+for(istep in 2:N){
+#the current state
+i<-X[istep-1]
+#sample from proposal density
+#since we want to generate from p(i-p)^(i-1)
+#the proposed state
+j<-rgeom(1,p) +1
+#calculate the acceptance probability
+#al <- (lamda^j)*factorial(i) *((1-p)^(j-i))/((lamda^i) * factorial(j))
+accept<-min(1,(dpois(j,lamda)*dgeom(i,p))/(dpois(i,lamda)*dgeom(j,p)))
+dgeom(i,p)
+u<-runif(1)
+if(u < accept){
+X[istep]<-j
+}else{
+X[istep]<-i
+}
+}
+mean(X)
+```
+
+
+```{r}
+var(X)
+```
+
