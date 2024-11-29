@@ -8,7 +8,7 @@ def generate_random_correlation_matrix(dim):
     # Step 1: Generate a random symmetric positive definite matrix
     # a lower triangular matrix
     L = np.tril(np.random.rand(dim, dim))
-    # Cholesky decomposition
+    # Cholesky decomposition to form covariance matrix
     positive_definite_matrix = np.dot(L,L.T)
 
     # Step 2: Normalize to create a correlation matrix
