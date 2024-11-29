@@ -30,7 +30,7 @@ Method 2: Numpy Vectorization
 ### Method 1: Python Loop
 For method 1, operations are performed element-by-element in Python loops, reason behind the slowness is due to 
 Python's interpretive overhead (including evaluating executing python bytecode and managing memory references) for each iteration. 
-For example, Updating position `pos` at each step involves accessing the integer memory chunk through its reference, creating a new Python integer object, 
+For example, Updating position `pos` at each step involves decoding bytecode, accessing the integer memory chunk through its reference, creating a new Python integer object, 
 allocating new memory and storing its new pointer reference into `pos`. Furthermore, each integer or object occupies a distinct memory chunk, accessing these objects 
 may require extra time to jump between non-contiguous memory locations leading to a poor memory access performance, even leading to fragmented memory.
 
