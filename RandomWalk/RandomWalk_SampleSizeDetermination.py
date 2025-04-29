@@ -6,6 +6,9 @@ import numpy as np
  Consider entire random walk as 1 trial
  p_hat = probability of reaching position 0 at least once
  1-p_hat = probability of failing to reaching position 0 at any steps
+
+ Intuition: According to CLT, when independent random sample size init_num_trials is large enough, with a finite mu & sigma. 
+ The sample mean will approximate a normal distribution. Mean of the sample in here is exactly 
  
  Standard Deviation estimate 1 =  sqrt(estimate_p*(1-estimate_p)) --> when sample is large > 30, (CLT) and confident enough it is a Binomial
  Standard Deviation estimate 2 =  sample standard deviation (s) --> when sample is small
